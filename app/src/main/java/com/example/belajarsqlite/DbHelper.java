@@ -22,7 +22,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public DbHelper(@Nullable Context context) {
         super(context, DB_NAME, null, 1);
     }
-
+    //HAFIDZ MUFRODI
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String stmt = "CREATE TABLE mhstb (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_NAMA + " TEXT, " + COLUMN_NIM + " TEXT, " + COLUMN_NO_HP + " TEXT)";
@@ -33,7 +33,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
 
     }
-
+    //HAFIDZ MUFRODI
     public boolean simpan(MhsModel mm){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -48,17 +48,16 @@ public class DbHelper extends SQLiteOpenHelper {
         else
             return true;
     }
-
-    public ArrayList<MhsModel> list(){
-
-        String query = "SELECT * FROM "+ TABLE_NAME;
+    //HAFIDZ MUFRODI
+    public ArrayList<MhsModel> listLimit(int limit) {
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE id % 2 != 0 LIMIT " + limit;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
 
         ArrayList<MhsModel> mhsList = new ArrayList<>();
 
-        if(cursor.getCount()> 0){
-            while(cursor.moveToNext()){
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
                 int id = cursor.getInt(0);
                 String nama = cursor.getString(1);
                 String nim = cursor.getString(2);
@@ -69,6 +68,7 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         return mhsList;
     }
+//HAFIDZ MUFRODI
 
     public boolean hapus(int id){
 
@@ -81,7 +81,7 @@ public class DbHelper extends SQLiteOpenHelper {
             return false;
 
     }
-
+    //HAFIDZ MUFRODI
     public boolean ubah(MhsModel mm){
 
         SQLiteDatabase db = this.getWritableDatabase();

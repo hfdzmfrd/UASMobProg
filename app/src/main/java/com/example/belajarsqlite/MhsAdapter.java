@@ -20,7 +20,7 @@ public class MhsAdapter extends RecyclerView.Adapter<MhsAdapter.MhsVH> {
         this.mhsList = mhsList;
         this.listener = listener;
     }
-
+    //HAFIDZ MUFRODI
     @NonNull
     @Override
     public MhsVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -30,15 +30,18 @@ public class MhsAdapter extends RecyclerView.Adapter<MhsAdapter.MhsVH> {
 
         return new MhsVH(v);
     }
-
     @Override
     public void onBindViewHolder(@NonNull MhsVH holder, int position) {
+        int nomorUrut = (position * 2) + 1; // Menghitung angka ganjil berdasarkan posisi
+
+        holder.tvNomorUrut.setText(String.valueOf(nomorUrut));
         holder.tvNamaVal.setText(mhsList.get(position).getNama());
         holder.tvNimVal.setText(mhsList.get(position).getNim());
         holder.tvNoHpVal.setText(mhsList.get(position).getNoHp());
 
         holder.bind(mhsList, position, listener);
     }
+//HAFIDZ MUFRODI G.211.20.0075
 
     public interface OnItemClickListener{
         void OnItemClick(ArrayList<MhsModel> mhsList, int position);
@@ -48,7 +51,7 @@ public class MhsAdapter extends RecyclerView.Adapter<MhsAdapter.MhsVH> {
         this.mhsList.remove(position);
         notifyDataSetChanged();
     }
-
+    //HAFIDZ MUFRODI
     @Override
     public int getItemCount() {
         return mhsList.size();
@@ -59,17 +62,18 @@ public class MhsAdapter extends RecyclerView.Adapter<MhsAdapter.MhsVH> {
         private TextView tvNamaVal, tvNimVal, tvNoHpVal;
         private CardView cvItem;
 
+        private TextView tvNomorUrut;
+
         public MhsVH(@NonNull View itemView) {
             super(itemView);
 
             tvNamaVal = itemView.findViewById(R.id.tvNamaVal);
             tvNimVal = itemView.findViewById(R.id.tvNimVal);
             tvNoHpVal = itemView.findViewById(R.id.tvNoHpVal);
-
+            tvNomorUrut = itemView.findViewById(R.id.tvNomorUrut);
             cvItem = itemView.findViewById(R.id.cvItem);
-
         }
-
+        //HAFIDZ MUFRODI
         public void bind(ArrayList<MhsModel> mhsList, int position, OnItemClickListener listener){
             cvItem.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -81,3 +85,4 @@ public class MhsAdapter extends RecyclerView.Adapter<MhsAdapter.MhsVH> {
         }
     }
 }
+//HAFIDZ MUFRODI

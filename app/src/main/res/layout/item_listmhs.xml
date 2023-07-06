@@ -22,8 +22,17 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvNomorUrut"
+                android:layout_width="119dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="TextView"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/tvNamaVal"
-                android:layout_width="match_parent"
+                android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="TextView"
